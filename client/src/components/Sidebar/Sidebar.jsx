@@ -4,8 +4,8 @@ import NavItem from './NavItem'
 
 const Sidebar = () => {
   return (
-    <div className="w-full h-screen border-r border-zinc-300 px-5">
-      <div className="fixed">
+    <div className="w-full h-screen">
+      <div className="fixed dark:bg-neutral-900 px-12 pl-5 border-r border-zinc-300 dark:border-zinc-700 h-full">
         <nav className="border-b border-dashed border-zinc-200 py-5">
         <NavItem icon={<Home size={20} />} label="Home" />
         <NavItem icon={<Component size={20} />} label="Explore" />

@@ -9,7 +9,7 @@ const CommunityCard = ({
         <div className="size-8 rounded-full flex justify-center items-center text-white bg-orange-600">
             {title[0]}
         </div>
-        <span className='text-gray-600'>{title}</span>
+        <span className='text-gray-500'>{title}</span>
       
     </div>
   )
