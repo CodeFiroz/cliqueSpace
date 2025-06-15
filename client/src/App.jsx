@@ -1,35 +1,19 @@
 import React from 'react'
 import Header from './components/Header/Header'
-import Main from './components/Layout/Main'
-import Sidebar from './components/Sidebar/Sidebar'
-import RightSidebar from './components/Sidebar/RightSidebar'
-import PostCard from './components/Ui/PostCard'
+import AuthModel from './components/Modal/AuthModel'
+import Home from './pages/Home'
+import SignIn from './pages/SignIn'
+import Register from './pages/Register'
 
 const App = () => {
   return (
     <div>
-      <Header />
-     <Main>
-  <div>
-    <Sidebar />
-  </div>
 
-  <div className="p-10 px-20 overflow-y-auto">
-    
-    <PostCard />
-    <PostCard />
-    <PostCard />
-    <PostCard />
-    <PostCard />
-    <PostCard />
-    <PostCard />
+    {/* <AuthModel /> */}
 
-  </div>
-
-  <div className="p-5">
-    <RightSidebar />
-  </div>
-</Main>
+     <Home />
+     {/* <SignIn /> */}
+     {/* <Register /> */}
 
     </div>
   )
