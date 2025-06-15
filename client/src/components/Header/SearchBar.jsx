@@ -10,6 +10,8 @@ const SearchBar = () => {
 
             <div className="flex w-full justify-center px-10 relative">
 
+               
+
                 <div className="w-full p-2 rounded-full flex gap-4 text-sm items-center bg-zinc-100 border border-zinc-200">
                     <span className='text-zinc-600'>
                         <Search size={18} />
@@ -19,6 +21,11 @@ const SearchBar = () => {
 
                 <div className={`px-10 w-full absolute top-15 z-10 ${showResult ? '' : 'hidden'}`}>
                     <div className="w-full bg-zinc-50 border border-zinc-200 shadow-sm rounded-lg p-2">
+
+                         <div className="text-center py-5">
+                    <h3 className='font-host font-bold text-gray-600'>No Result</h3>
+                    <p className='text-xs text-zinc-400'>start typing to see results...</p>
+                </div>
 
                         <div className="flex p-2 hover:bg-gray-100 cursor-pointer rounded-md items-center gap-3 text-sm text-gray-600">
                             <div className="size-10 bg-orange-500 flex justify-center items-center rounded-full text-white font-bold">
