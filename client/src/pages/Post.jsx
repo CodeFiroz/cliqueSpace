@@ -20,27 +20,27 @@ const Post = () => {
               S
             </div>
 
-            <div className='text-zinc-700 text-xs'>
+            <div className='text-zinc-700 text-xs dark:text-zinc-300'>
               <p><a href="#" className='hover:text-orange-500'>c/shits-happens</a> ● 2 hr ago</p>
               <p><a href="#">BiryaniElaichi</a></p>
             </div>
 
           </div>
 
-          <h4 className='text-xl font-semibold text-gray-600 mb-5'>
+          <h4 className='text-xl font-semibold text-gray-600 dark:text-gray-200 mb-5'>
             Why people are racist towards delhi people
           </h4>
 
-          <p className='text-sm text-gray-500'>
+          <p className='text-sm text-gray-500 dark:text-slate-300 font-thing'>
             So last month I visited haridwar and was at har ki pauri and there was a guy who was talking to me very nicely first but after that he asked me where r u from I told him I'm from Delhi and then after that his tone changed and he becomes rude for no reason and when I asked him where r u from he told me he is from Mumbai and after that he told me Delhi's people are very bad they're illiterate they don't know how to talk and how to drive a car and bla bla so I just stand up from there and go elsewhere
           </p>
 
           <div className="flex justify-between items-center mt-5 pt-2 border-t border-zinc-100">
 
-            <div className="flex gap-3 items-center bg-zinc-100 border border-zinc-200 rounded-full p-1">
+            <div className="flex gap-3 items-center bg-zinc-100 dark:bg-gray-900 border border-zinc-200 dark:border-gray-700 rounded-full p-1">
 
               <button className='size-8 rounded-full flex justify-center items-center text-orange-600 border-2 border-orange-600 cursor-pointer hover:text-white hover:bg-orange-600'><ThumbsUp size={20} /></button>
-              <p className='text-zinc-600 text-lg font-black'>20</p>
+              <p className='text-zinc-600 dark:text-white text-md font-semibold font-host'>20</p>
               <button className='size-8 rounded-full flex justify-center items-center text-indigo-500 border-2  border-indigo-500 cursor-pointer hover:text-white hover:bg-indigo-500'><ThumbsDown size={20} /></button>
 
             </div>

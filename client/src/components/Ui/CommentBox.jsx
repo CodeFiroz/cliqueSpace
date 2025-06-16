@@ -37,7 +37,7 @@ const CommentBox = ({
   return (
     <div className={`w-full rounded-2xl p-4 border-2 border-gray-200 mt-6 ${className}`}>      
       {picture && (
-        <div className="w-full flex justify-center items-center bg-zinc-100 p-2 rounded-xl relative">
+        <div className="w-full flex justify-center items-center bg-zinc-100 dark:bg-neutral-800 p-2 rounded-xl relative">
           <img src={picture} alt="upload" className="object-contain max-h-60 rounded-lg" />
           <button
             onClick={handleRemoveImage}
@@ -51,7 +51,7 @@ const CommentBox = ({
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
-        className="w-full resize-none outline-none border-0 mt-3 pt-1 pl-1 text-sm text-gray-600"
+        className="w-full resize-none outline-none border-0 mt-3 pt-1 pl-1 text-sm text-gray-600 dark:text-zinc-100"
         placeholder={placeholder}
         rows={3}
       />
@@ -66,11 +66,11 @@ const CommentBox = ({
             id={`picture-upload-${uniqueId}`}
             hidden
           />
-          <label htmlFor={`picture-upload-${uniqueId}`} className="w-8 h-8 cursor-pointer flex justify-center items-center rounded-full hover:text-white hover:bg-teal-400 transition">
+          <label htmlFor={`picture-upload-${uniqueId}`} className="w-8 h-8 dark:text-zinc-300 hover:text-black cursor-pointer flex justify-center items-center rounded-full  hover:bg-teal-400 transition">
             <Image size={18} />
           </label>
 
-          <div className="w-8 h-8 cursor-pointer flex justify-center items-center rounded-full hover:bg-amber-400 transition">
+          <div className="w-8 h-8 dark:text-zinc-300 hover:text-black cursor-pointer flex justify-center items-center rounded-full hover:bg-amber-400 transition">
             <Smile size={18} />
           </div>
         </div>

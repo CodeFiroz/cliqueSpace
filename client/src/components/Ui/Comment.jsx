@@ -39,12 +39,12 @@ const Comment = ({
       <div className="flex-1">
         {/* Meta */}
         <p className="text-xs text-zinc-600">
-          <span className="font-semibold text-zinc-800">{author}</span> •{" "}
+          <span className="font-semibold text-zinc-800 dark:text-zinc-200">{author}</span> •{" "}
           {time}
         </p>
 
         {/* Content */}
-        <p className="mt-1 mb-3 text-sm text-zinc-700">{content}</p>
+        <p className="mt-1 mb-3 text-sm text-zinc-700 dark:text-gray-400">{content}</p>
 
         {/* Actions */}
         <div className="flex items-center justify-between border-t border-zinc-100 pt-2">
@@ -56,7 +56,7 @@ const Comment = ({
             >
               <ArrowUp size={16} />
             </button>
-            <span className="text-sm text-zinc-600">{score}</span>
+            <span className="text-sm text-zinc-600 dark:text-zinc-200">{score}</span>
             <button
               onClick={onDownvote}
               className="w-6 h-6 rounded-full flex items-center justify-center text-indigo-500 bg-zinc-100 hover:bg-indigo-500 hover:text-white transition"
