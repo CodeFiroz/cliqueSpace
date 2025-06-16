@@ -4,14 +4,15 @@ import AuthModel from './components/Modal/AuthModel'
 import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import Register from './pages/Register'
+import Post from './pages/Post'
 
 const App = () => {
   return (
     <div>
 
     {/* <AuthModel /> */}
-
-     <Home />
+    <Post />
+     {/* <Home /> */}
      {/* <SignIn /> */}
      {/* <Register /> */}
 
