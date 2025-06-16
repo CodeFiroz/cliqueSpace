@@ -23,8 +23,8 @@ const PostCard = ({
 
         {
             image ?  (
-               <div className="flex justify-center items-center">
-                 <img className='rounded' src={image} alt="" />
+               <div className="flex justify-center items-center bg-slate-100 rounded-2xl p-3">
+                 <img className='rounded max-h-100' src={image} alt="" />
                </div>
             ) : (
 <p className='text-sm text-gray-500 dark:text-gray-400 line-clamp-4'>

@@ -4,10 +4,14 @@ import Sidebar from '../components/Sidebar/Sidebar'
 import { Bookmark, Flag, Image, Smile, ThumbsDown, ThumbsUp, Trash } from 'lucide-react'
 import Comment from '../components/Ui/Comment'
 import CommentBox from '../components/Ui/CommentBox'
+import ReportModel from '../components/Modal/ReportModal'
+import CommunityInfo from '../components/Sidebar/CommunityInfo'
 
 const Post = () => {
   return (
     <div>
+
+      {/* <ReportModel /> */}
       <Main>
         <div>
           <Sidebar />
@@ -30,6 +34,10 @@ const Post = () => {
           <h4 className='text-xl font-semibold text-gray-600 dark:text-gray-200 mb-5'>
             Why people are racist towards delhi people
           </h4>
+
+          <div className=" mb-5 w-full rounded-2xl bg-gray-200 p-4 flex justify-center items-center">
+            <img src="https://i.pinimg.com/736x/25/19/e2/2519e2993236d44423fab78a4cad3351.jpg" className='rounded-2xl' alt="" />
+          </div>
 
           <p className='text-sm text-gray-500 dark:text-slate-300 font-thing'>
             So last month I visited haridwar and was at har ki pauri and there was a guy who was talking to me very nicely first but after that he asked me where r u from I told him I'm from Delhi and then after that his tone changed and he becomes rude for no reason and when I asked him where r u from he told me he is from Mumbai and after that he told me Delhi's people are very bad they're illiterate they don't know how to talk and how to drive a car and bla bla so I just stand up from there and go elsewhere
@@ -100,7 +108,8 @@ const Post = () => {
         </div>
 
         <div>
-
+        <CommunityInfo />
+        
         </div>
       </Main>
     </div>

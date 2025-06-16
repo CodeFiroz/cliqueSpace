@@ -5,7 +5,7 @@ const Main = ({children}) => {
   return (
     <>
     <Header />
-    <main className='w-full grid grid-cols-[300px_1fr_300px] dark:bg-neutral-950'>
+    <main className='w-full grid grid-cols-[300px_1fr_400px] dark:bg-neutral-950'>
 
         {children}
       
