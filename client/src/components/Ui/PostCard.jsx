@@ -6,7 +6,7 @@ const PostCard = ({
     image
 }) => {
   return (
-    <div className='cursor-pointer rounded-2xl hover:bg-zinc-100 dark:hover:bg-neutral-950 dark:bg-neutral-900 p-5 border mb-4 dark:border-zinc-800 border-zinc-200'>
+    <div className='cursor-pointer rounded-2xl hover:bg-gray-200 dark:hover:bg-neutral-950 dark:bg-neutral-900 p-5 border mb-4 dark:border-zinc-800 border-zinc-200'>
 
         <div className="flex items-center gap-2 text-gray-600 text-xs mb-3">
             <div className="size-6 bg-teal-500 text-white flex justify-center items-center rounded-full">
