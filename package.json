@@ -1,0 +1,24 @@
+{
+  "name": "cliquespace",
+  "version": "1.0.0",
+  "description": "community social platform",
+  "keywords": [
+    "MERN",
+    "MONGODB"
+  ],
+  "homepage": "https://github.com/CodeFiroz/cliqueSpace#readme",
+  "bugs": {
+    "url": "https://github.com/CodeFiroz/cliqueSpace/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeFiroz/cliqueSpace.git"
+  },
+  "license": "ISC",
+  "author": "firoz",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "server": "nodemon app.js"
+  }
+}
