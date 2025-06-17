@@ -7,6 +7,7 @@ import Register from './pages/Register'
 import Post from './pages/Post'
 import Profile from './pages/Profile'
 import MyComments from './pages/MyComments'
+import NewProfile from './pages/NewProfile'
 
 const App = () => {
   return (
@@ -16,10 +17,10 @@ const App = () => {
     {/* <Profile /> */}
     {/* <AuthModel /> */}
     {/* <Post /> */}
-     <Home />
+     {/* <Home /> */}
      {/* <SignIn /> */}
      {/* <Register /> */}
-
+      <NewProfile />
     </div>
   )
 }

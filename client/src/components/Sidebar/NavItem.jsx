@@ -9,7 +9,7 @@ const NavItem = ({
     <>
           <a 
         href={nav}
-        className='flex items-center gap-3 w-full p-2 hover:bg-zinc-100 dark:hover:bg-neutral-800 rounded'
+        className='flex items-center gap-3 w-full p-2 hover:bg-zinc-200 dark:hover:bg-neutral-800 rounded'
         >
             <div className='text-zinc-600 dark:text-zinc-500'>
                 {icon}
