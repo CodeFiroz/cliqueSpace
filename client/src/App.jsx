@@ -5,27 +5,32 @@ import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import Register from './pages/Register'
 import Post from './pages/Post'
-import Profile from './pages/Profile'
-import MyComments from './pages/MyComments'
 import NewProfile from './pages/NewProfile'
 import Community from './pages/Community'
 import WritePost from './pages/WritePost'
 
+import {BrowserRouter, Routes, Route} from "react-router-dom"
+
 const App = () => {
   return (
-    <div>
+    <>
 
-    {/* <MyComments /> */}
-    {/* <Profile /> */}
-    {/* <AuthModel /> */}
-    {/* <Post /> */}
-     <Home />
-     {/* <SignIn /> */}
-     {/* <Register /> */}
-      {/* <NewProfile /> */}
-      {/* <Community /> */}
-      {/* <WritePost /> */}
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/sign-in' element={<SignIn />} />
+      <Route path='/register' element={<Register />} />
+      <Route path='/post' element={<Post />} />
+      <Route path='/profile' element={<NewProfile />} />
+      <Route path='/new-post' element={<WritePost />} />
+      <Route path='/community' element={<Community />} />
+    </Routes>
+    </BrowserRouter>
+
+      
+
+  
+    </>
   )
 }
 

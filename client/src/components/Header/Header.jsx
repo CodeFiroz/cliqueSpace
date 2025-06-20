@@ -1,40 +1,88 @@
-import React from 'react'
-import SearchBar from './SearchBar'
-import { Moon } from 'lucide-react'
+import React, { useState } from 'react';
+import { Moon, Menu, X, Search } from 'lucide-react';
+import ThemeToggleButton from './ThemeToggleButton';
+import MobileNavItems from './MobileNavItems';
+import MobileSearchBar from './MobileSearchBar';
+import UserProfileButton from './UserProfileButton';
+import DesktopSearchBar from './DesktopSearchBar';
 
 const Header = () => {
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [showMobileSearch, setShowMobileSearch] = useState(false);
+
     return (
-        <div className='w-full sticky top-0 left-0 grid grid-cols-[1fr_2fr_1fr] gap-5 items-center bg-zinc-50 dark:bg-neutral-800 border-b border-zinc-200 dark:border-zinc-700 px-10 py-2'>
+        <header className="w-full sticky top-0 left-0 bg-zinc-50 dark:bg-neutral-800 border-b border-zinc-200 dark:border-zinc-700 z-50">
+            {/* Desktop Header */}
+            <div className="hidden md:grid md:grid-cols-3 gap-5 items-center px-6 py-3 lg:px-10">
+                <a
+                    href="#"
+                    className="text-xl lg:text-2xl font-bold text-gray-800 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
+                >
+                    CliqueSpace
+                </a>
 
-            <a
-                href="#"
-                className='text-2xl font-bold text-gray-800 dark:text-gray-300'
-            >
-                <span>CliqueSpace</span>
-            </a>
+                <div className="flex justify-center">
+                    <DesktopSearchBar />
+                </div>
 
-            <div>
-
-                <SearchBar />
-
+                <div className="flex justify-end gap-3">
+                    <UserProfileButton />
+                    <ThemeToggleButton />
+                </div>
             </div>
 
+            {/* Mobile Header */}
+            <div className="md:hidden flex items-center justify-between px-4 py-3">
+                <div className="flex items-center gap-4">
+                    <button
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        className="text-gray-700 dark:text-gray-300"
+                        aria-label="Toggle menu"
+                    >
+                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
 
-            <div className="flex justify-end gap-3">
+                    <a
+                        href="#"
+                        className="text-xl font-bold text-gray-800 dark:text-gray-300"
+                    >
+                        CliqueSpace
+                    </a>
+                </div>
 
-                <button className='inline-flex items-center gap-2 bg-zinc-200 dark:bg-gray-800 pl-2 pr-5 cursor-pointer rounded-full border border-gray-300 dark:border-zinc-700 duration-200 hover:scale-95 hover:skew-1 hover:bg-zinc-300 dark:hover:bg-gray-900'>
-                    <div className='size-8 bg-orange-500 text-white font-bold flex justify-center items-center rounded-full'>F</div>
-                    <span className='dark:text-zinc-200'>u/firoz</span>
-                </button>
-
-                <button className='inline-flex size-12 justify-center items-center bg-zinc-200 dark:bg-gray-800 cursor-pointer rounded-full border border-gray-300 dark:border-zinc-500 text-gray-600 dark:text-gray-300 duration-200 hover:scale-95 hover:bg-zinc-300 dark:hover:bg-gray-900'>
-                    <Moon size={26} />
-                </button>
+                <div className="flex items-center gap-3">
+                    <button
+                        onClick={() => setShowMobileSearch(!showMobileSearch)}
+                        className="text-gray-700 dark:text-gray-300"
+                        aria-label="Toggle search"
+                    >
+                        <Search size={22} />
+                    </button>
+                    <UserProfileButton mobile />
+                </div>
             </div>
 
+            {/* Mobile Search Bar */}
+            {showMobileSearch && (
+                <div className="md:hidden px-4 pb-3">
+                    <MobileSearchBar />
+                </div>
+            )}
 
-        </div>
-    )
-}
+            {/* Mobile Menu */}
+            {isMobileMenuOpen && (
+                <div className="md:hidden bg-zinc-100 dark:bg-neutral-900 border-t border-zinc-200 dark:border-zinc-700">
+                    <div className="px-4 py-3">
+                        <MobileNavItems />
+                    </div>
+                    <div className="px-4 py-3 border-t border-zinc-200 dark:border-zinc-700">
+                        <ThemeToggleButton mobile />
+                    </div>
+                </div>
+            )}
+        </header>
+    );
+};
 
-export default Header
+
+export default React.memo(Header);

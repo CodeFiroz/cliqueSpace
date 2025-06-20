@@ -1,23 +1,19 @@
-import React from 'react'
+import React from 'react';
 
-const NavItem = ({
-    icon,
-    label,
-    nav = "/"
-}) => {
+const NavItem = ({ icon, label, nav = "/" }) => {
   return (
-    <>
-          <a 
-        href={nav}
-        className='flex items-center gap-3 w-full p-2 hover:bg-zinc-200 dark:hover:bg-neutral-800 rounded'
-        >
-            <div className='text-zinc-600 dark:text-zinc-500'>
-                {icon}
-            </div>
-            <span className='mt-1 text-gray-700 dark:text-zinc-400'>{label}</span>
-        </a>
-    </>
-  )
-}
+    <a
+      href={nav}
+      className="flex items-center gap-3 w-full p-2 hover:bg-zinc-200 dark:hover:bg-neutral-800 rounded transition-colors duration-200"
+    >
+      <div className="text-zinc-600 dark:text-zinc-400">
+        {React.cloneElement(icon, { className: "min-w-[20px]" })}
+      </div>
+      <span className="text-gray-700 dark:text-zinc-300 text-sm font-medium">
+        {label}
+      </span>
+    </a>
+  );
+};
 
-export default NavItem
+export default React.memo(NavItem);

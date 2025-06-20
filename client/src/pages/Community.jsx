@@ -3,13 +3,14 @@ import Header from '../components/Header/Header'
 import Sidebar from '../components/Sidebar/Sidebar'
 import { CakeIcon, Calendar, Globe, Plus, Users } from 'lucide-react'
 import PostCard from '../components/Ui/PostCard'
+import CommunityInfo from '../components/Sidebar/CommunityInfo'
 
 const Community = () => {
   return (
     <>
       <Header />
 
-      <div className="grid grid-cols-[300px_1fr] dark:bg-neutral-900">
+      <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr_350px] dark:bg-neutral-900">
 
         <div>
           <Sidebar />
@@ -91,6 +92,10 @@ Would really appreciate some honest thoughts`}
             />
           </div>
 
+        </div>
+
+        <div className='pr-5'>
+          <CommunityInfo />
         </div>
 
       </div>

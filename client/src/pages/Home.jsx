@@ -1,14 +1,17 @@
-import React from 'react'
 import Main from '../components/Layout/Main'
 import PostCard from '../components/Ui/PostCard'
 import Sidebar from '../components/Sidebar/Sidebar'
-import RightSidebar from '../components/Sidebar/RightSidebar'
+import AuthModel from '../components/Modal/AuthModel'
+import ReportModal from '../components/Modal/ReportModal'
 
 const Home = () => {
+
   return (
     <div>
        <Main>
         <div>
+          {/* {showModal && <AuthModel onClose={() => setShowModal(false)} />} */}
+          {/* <ReportModal /> */}
           <Sidebar />
         </div>
 
@@ -38,9 +41,6 @@ const Home = () => {
 
         </div>
 
-        <div className="p-5">
-          <RightSidebar />
-        </div>
       </Main>
     </div>
   )
