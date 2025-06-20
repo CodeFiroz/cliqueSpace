@@ -8,6 +8,8 @@ import Post from './pages/Post'
 import Profile from './pages/Profile'
 import MyComments from './pages/MyComments'
 import NewProfile from './pages/NewProfile'
+import Community from './pages/Community'
+import WritePost from './pages/WritePost'
 
 const App = () => {
   return (
@@ -17,10 +19,12 @@ const App = () => {
     {/* <Profile /> */}
     {/* <AuthModel /> */}
     {/* <Post /> */}
-     {/* <Home /> */}
+     <Home />
      {/* <SignIn /> */}
      {/* <Register /> */}
-      <NewProfile />
+      {/* <NewProfile /> */}
+      {/* <Community /> */}
+      {/* <WritePost /> */}
     </div>
   )
 }
