@@ -1,106 +1,141 @@
-import React from 'react'
-import Header from '../components/Header/Header'
-import Sidebar from '../components/Sidebar/Sidebar'
-import { CakeIcon, Calendar, Globe, Plus, Users } from 'lucide-react'
-import PostCard from '../components/Ui/PostCard'
-import CommunityInfo from '../components/Sidebar/CommunityInfo'
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Info, Menu, X } from 'lucide-react';
+import Header from '../components/Header/Header';
+import Sidebar from '../components/Sidebar/Sidebar';
+import { CakeIcon, Calendar, Globe, Plus, Users } from 'lucide-react';
+import PostCard from '../components/Ui/PostCard';
+import CommunityInfo from '../components/Sidebar/CommunityInfo';
 
 const Community = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   return (
     <>
       <Header />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr_350px] dark:bg-neutral-900">
+      {/* Mobile Sidebar Toggle Button */}
+      <button
+        onClick={() => setIsSidebarOpen(true)}
+        className="lg:hidden fixed bottom-6 right-6 z-30 w-14 h-14 bg-orange-500 rounded-full flex items-center justify-center text-white shadow-lg"
+      >
+        <Info size={24} />
+      </button>
 
-        <div>
+      <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr_350px] dark:bg-neutral-900 min-h-screen">
+        {/* Sidebar - Offcanvas on mobile */}
+        <AnimatePresence>
+          {isSidebarOpen && (
+            <>
+              {/* Overlay */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.5 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setIsSidebarOpen(false)}
+                className="fixed inset-0 z-40 bg-black lg:hidden"
+              />
+
+              {/* Sidebar */}
+              <motion.div
+                initial={{ x: -300 }}
+                animate={{ x: 0 }}
+                exit={{ x: -300 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                className="fixed top-0 left-0 z-50 h-screen w-72 bg-white dark:bg-neutral-800 shadow-xl lg:hidden"
+              >
+                <button
+                  onClick={() => setIsSidebarOpen(false)}
+                  className="absolute top-4 right-4 p-1 rounded-full hover:bg-zinc-100 dark:hover:bg-neutral-700 text-zinc-500 dark:text-zinc-400"
+                >
+                  <X size={20} />
+
+                </button>
+                <div className="p-4 mt-4 h-full overflow-y-auto">
+                  <CommunityInfo />
+                </div>
+                <Sidebar />
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+
+        {/* Desktop Sidebar (always visible on lg+) */}
+        <div className="hidden lg:block">
           <Sidebar />
         </div>
 
-        <div className='pt-5 pr-5'>
+        {/* Main Content */}
+        <div className="pt-5 px-5 pr-5 pb-20 lg:pb-5">
+          {/* Community Banner */}
+          <div className="w-full h-40 md:h-30 rounded-2xl bg-[url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/twcomponents/header.webp')] bg-cover bg-center" />
 
-          <div className="w-full h-30 rounded-2xl bg-[url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/twcomponents/header.webp')] bg-cover ">
-          </div>
-
-          <div className="flex justify-between items-start px-10">
-
-            <div className='-translate-y-17'>
-
-              <img src="https://i.pinimg.com/736x/7a/13/40/7a13407cd778b9da0a443eff81077688.jpg" className="size-30 rounded-full object-cover border-7 border-white dark:border-neutral-700" />
-              <h2 className='text-2xl font-bold dark:text-gray-200 mt-4'>
-                C/DelhiHutiyapa
-              </h2>
-
-              <p className='text-sm mt-3 text-zinc-600 dark:text-zinc-300'>
-                Delhi is the place dedicated to Delhi NCR and all that engulfs it
-              </p>
-
-              <a href="#" className='text-xs inline-flex px-3 py-2 rounded-full items-center gap-3 mt-3 bg-indigo-500 text-white'>Create Post <Plus size={15} />
-              </a>
-            </div>
-
-            <div className='pt-4'>
-
-              <div className="my-2 flex items-center gap-2 text-sm text-gray-600 dark:text-gray-200">
-                <Users size={16} />
-                <p>
-                  216 Members
+          {/* Community Header */}
+          <div className="flex flex-col md:flex-row justify-between items-start px-5 md:px-10">
+            <div className="flex flex-col md:flex-row items-start md:items-end gap-4 -translate-y-10">
+              <img
+                src="https://i.pinimg.com/736x/7a/13/40/7a13407cd778b9da0a443eff81077688.jpg"
+                className="size-20 md:size-28 rounded-full object-cover border-4 md:border-[6px] border-white dark:border-neutral-700 shadow-md"
+                alt="Community avatar"
+              />
+              <div className="md:mb-2">
+                <h2 className='text-xl md:text-2xl font-bold dark:text-gray-200'>
+                  C/DelhiHutiyapa
+                </h2>
+                <p className='text-xs md:text-sm mt-1 text-zinc-600 dark:text-zinc-300 max-w-md'>
+                  Delhi is the place dedicated to Delhi NCR and all that engulfs it
                 </p>
               </div>
-
-              <div className="my-2 flex items-center gap-2 text-sm text-gray-600 dark:text-gray-200">
-                <Globe size={16} />
-                <p>
-                  Public
-                </p>
-
-              </div>
-              <button className='px-8 cursor-pointer py-2 bg-orange-500 text-white rounded-full text-xs'>Join Now</button>
-
             </div>
 
+            {/* Community Stats - Mobile */}
+            <div className="lg:hidden grid grid-cols-2 gap-3 w-full mt-3 md:mt-0 md:w-auto mb-5">
+              <div className="flex items-center gap-2 bg-zinc-100 dark:bg-neutral-800 p-2 rounded-lg">
+                <Users size={16} className="text-orange-500" />
+                <div>
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400">Members</p>
+                  <p className="font-medium dark:text-white">12.5k</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 bg-zinc-100 dark:bg-neutral-800 p-2 rounded-lg">
+                <CakeIcon size={16} className="text-orange-500" />
+                <div>
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400">Created</p>
+                  <p className="font-medium dark:text-white">Jan 2020</p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="px-15">
+          {/* Posts */}
+          <div className="space-y-5">
             <PostCard
-              title={"Whats the best photo in your gallery?"}
-              image={"https://preview.redd.it/whats-the-best-photo-in-your-gallery-v0-3kuuw4f5ch7f1.jpeg?width=640&crop=smart&auto=webp&s=ab7ccbf25ad2ca2848254d876105193a0f6b9ccc"}
+              title="can i pause my degree"
+              content="I've completed 1 year of BBA, but now I'm considering taking a gap year to prepare for the NEET entrance exam again..."
             />
-
-
             <PostCard
-              title={"Got judged in Delhi Metro for resting on my girlfriend’s shoulder"}
-              content={`I wanted to share something that happened today and get your take on it.
-
-Me and my girlfriend were travelling in the Delhi Metro. She recently got into Indigo as a flight attendant, and today was her medical test. We had to leave early around 7 AM, and both of us didn’t get much sleep.
-
-On our way back, I was tired and had my head resting on her shoulder. At one point, I jokingly rubbed my nose on her shoulder because I had a bit of a cold — nothing over the top, just a small moment between us.
-
-An uncle sitting next to us suddenly said: “Don’t do this. You don’t have etiquettes. This is a public place. Don’t you have elders at home? Would you do this in front of them?”
-
-I calmly tried to explain that I wasn’t doing anything inappropriate, but he kept insisting. Then another uncle joined him and told me to shut up and stop arguing. I told them I was being respectful and only trying to explain my side.
-
-Honestly, it spoiled my mood. I wasn’t trying to make a scene or offend anyone — just tired and sharing a peaceful moment with someone I care about.
-
-Was I wrong here? How do you usually deal with moral policing like this in public spaces?
-
-Would really appreciate some honest thoughts`}
+              title="Why people are racist towards delhi people"
+              content="So last month I visited haridwar and was at har ki pauri and there was a guy who was talking to me very nicely first but after that he asked me where r u from..."
             />
-
             <PostCard
-              title={"my mom got hurt and i don't feel bad about it at all"}
-              content={`last night my sister was trying to find her ruler but she couldn't find it anywhere in her room so she asked my mom to find it for her, and when my mom was searching for it under the bed and dressing table my sister started saying ki "arre i have searched there already and all, arre mom do not tear my chart paper", ik my sister does get kinda cranky sometimes, but then this thing and some past thing from yesterday too got added up and my sister got a good beating from my mom, and then she was yelling at her things like you irritate me so much you get on my nerves bla bla bla, then my dad went inside the room to see what's going on, meanwhile my sister left the room at the first chance, my mom kept yelling and probably all that yelling she was doing took over her head and she ran to give my sister a beating again but then my dad came in her way and her leg got stuck in the door of the room and she got a cut in the little finger of her toes and she started bleeding profusely, but dad did her first aid and later she went to see a doctor and she got stitches.`}
+              title="Bata Bhai 😂"
+              image="https://preview.redd.it/wzctfbed827f1.jpeg?width=320&crop=smart&auto=webp&s=6a2df69df933c589f7daf557a56cc1a8e5cc1d4f"
+              content="that he asked me where r u from I told him I'm from Delhi and then after that his tone changed and he becomes rude for no reason..."
+            />
+            <PostCard
+              title="Caught my elder sister cheating"
+              content="So last month I visited haridwar and was at har ki pauri and there was a guy who was talking to me very nicely first but after that he asked me where r u from..."
             />
           </div>
-
         </div>
 
-        <div className='pr-5'>
+        {/* Right Sidebar - Hidden on mobile */}
+        <div className='hidden lg:block pr-5'>
           <CommunityInfo />
         </div>
-
       </div>
     </>
   )
 }
 
-export default Community  
+export default Community;

@@ -5,10 +5,10 @@ import NavItem from './NavItem';
 const navItems = [
   {
     main: [
-      { icon: <Home size={20} />, label: "Home" },
+      { icon: <Home size={20} />, label: "Home", nav: "/" },
       { icon: <Component size={20} />, label: "Explore" },
       { icon: <MessageSquareDot size={20} />, label: "Updates" },
-      { icon: <Plus size={20} />, label: "Create Community" }
+      { icon: <Plus size={20} />, label: "Create Community", nav: "/create-community" }
     ],
     resources: [
       { icon: <Github size={20} />, label: "GitHub Repo" },
@@ -23,7 +23,7 @@ const Sidebar = () => {
     <aside className="lg:block hidden fixed h-full w-[300px] dark:bg-neutral-900 px-5 border-r border-zinc-300 dark:border-zinc-700">
       <nav className="border-b border-dashed border-zinc-200 dark:border-zinc-700 py-5">
         {navItems[0].main.map((item, index) => (
-          <NavItem key={`main-${index}`} icon={item.icon} label={item.label} />
+          <NavItem key={`main-${index}`} icon={item.icon} label={item.label} nav={item.nav} />
         ))}
       </nav>
 
@@ -32,7 +32,7 @@ const Sidebar = () => {
           Resources
         </p>
         {navItems[0].resources.map((item, index) => (
-          <NavItem key={`resources-${index}`} icon={item.icon} label={item.label} />
+          <NavItem key={`resources-${index}`} icon={item.icon} label={item.label} nav={item.nav} />
         ))}
       </nav>
     </aside>

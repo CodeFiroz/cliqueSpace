@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NavItem = ({ icon, label, nav = "/" }) => {
   return (
-    <a
-      href={nav}
+    <Link
+      to={nav}
       className="flex items-center gap-3 w-full p-2 hover:bg-zinc-200 dark:hover:bg-neutral-800 rounded transition-colors duration-200"
     >
       <div className="text-zinc-600 dark:text-zinc-400">
@@ -12,7 +13,7 @@ const NavItem = ({ icon, label, nav = "/" }) => {
       <span className="text-gray-700 dark:text-zinc-300 text-sm font-medium">
         {label}
       </span>
-    </a>
+    </Link>
   );
 };
 

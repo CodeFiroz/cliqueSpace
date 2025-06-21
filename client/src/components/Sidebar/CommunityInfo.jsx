@@ -44,22 +44,25 @@ const CommunityInfo = () => {
               </h3>
             </div>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setIsJoined(!isJoined)}
-              className={`px-4 py-1.5 text-sm rounded-full font-medium ${
-                isJoined
-                  ? 'bg-zinc-100 dark:bg-neutral-700 text-zinc-800 dark:text-zinc-200 border border-zinc-300 dark:border-neutral-600'
-                  : 'bg-orange-500 hover:bg-orange-600 text-white'
-              } transition-colors`}
-            >
-              {isJoined ? 'Joined' : 'Join'}
-            </motion.button>
+           
           </div>
 
           {/* Description with expand/collapse */}
           <div className="mt-3">
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setIsJoined(!isJoined)}
+              className={`px-4 w-full py-1.5 text-sm rounded-full font-medium mb-4 ${
+                isJoined
+                  ? 'bg-zinc-100 dark:bg-neutral-700 text-zinc-800 dark:text-zinc-200 border border-zinc-300 dark:border-neutral-600'
+                  : 'bg-orange-400 hover:bg-orange-600 text-white'
+              } transition-colors`}
+            >
+              {isJoined ? 'Joined' : 'Join'}
+            </motion.button>
+
             <div 
               className="flex items-center gap-1 cursor-pointer"
               onClick={() => setShowDescription(!showDescription)}
@@ -70,6 +73,7 @@ const CommunityInfo = () => {
               >
                 <ChevronDown size={16} className="text-zinc-500 dark:text-zinc-400" />
               </motion.div>
+              
               <span className="text-xs text-zinc-500 dark:text-zinc-400">About Community</span>
             </div>
 

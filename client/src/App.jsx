@@ -10,6 +10,7 @@ import Community from './pages/Community'
 import WritePost from './pages/WritePost'
 
 import {BrowserRouter, Routes, Route} from "react-router-dom"
+import CreateCommunity from './pages/CreateCommunity'
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
       <Route path='/profile' element={<NewProfile />} />
       <Route path='/new-post' element={<WritePost />} />
       <Route path='/community' element={<Community />} />
+      <Route path='/create-community' element={<CreateCommunity />} />
     </Routes>
     </BrowserRouter>
 
