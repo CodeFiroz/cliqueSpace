@@ -26,7 +26,7 @@ const Community = () => {
             <div className='-translate-y-17'>
 
               <img src="https://i.pinimg.com/736x/7a/13/40/7a13407cd778b9da0a443eff81077688.jpg" className="size-30 rounded-full object-cover border-7 border-white dark:border-neutral-700" />
-              <h2 className='text-2xl font-bold dark:text-gray-200'>
+              <h2 className='text-2xl font-bold dark:text-gray-200 mt-4'>
                 C/DelhiHutiyapa
               </h2>
 

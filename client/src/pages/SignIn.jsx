@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from "react-router-dom"
 import { Eye, EyeOff, Mail, Lock, ArrowRight } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -194,19 +195,8 @@ const SignIn = () => {
                 )}
               </div>
 
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <input
-                    id="remember-me"
-                    name="remember-me"
-                    type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                  />
-                  <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700 dark:text-gray-300">
-                    Remember me
-                  </label>
-                </div>
-
+              <div className="flex items-center justify-end">
+                
                 <div className="text-sm">
                   <a href="#" className="font-medium text-blue-500 hover:text-blue-400">
                     Forgot password?
@@ -239,9 +229,9 @@ const SignIn = () => {
 
               <div className="text-center text-sm text-gray-600 dark:text-gray-400">
                 Don't have an account?{' '}
-                <a href="#" className="text-blue-500 hover:underline font-medium">
+                <Link to="/register" className="text-blue-500 hover:underline font-medium">
                   Register here
-                </a>
+                </Link>
               </div>
             </motion.form>
           </div>

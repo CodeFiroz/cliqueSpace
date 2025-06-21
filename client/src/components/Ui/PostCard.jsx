@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MoreVertical, Flag, Bookmark, Share2, Link, EyeOff } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { MoreVertical, Flag, Bookmark, Share2, Link as LinkIcon, EyeOff } from 'lucide-react';
 
 const PostCard = ({ title, content, image, community = "strangers-with-vcandy", time = "09 min ago" }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,25 +22,26 @@ const PostCard = ({ title, content, image, community = "strangers-with-vcandy", 
   const menuItems = [
     { icon: <Bookmark size={16} />, label: 'Save', action: () => alert('Post saved!') },
     { icon: <Share2 size={16} />, label: 'Share', action: () => alert('Share dialog opened') },
-    { icon: <Link size={16} />, label: 'Copy Link', action: () => navigator.clipboard.writeText(window.location.href) },
+    { icon: <LinkIcon size={16} />, label: 'Copy Link', action: () => navigator.clipboard.writeText(window.location.href) },
     { icon: <EyeOff size={16} />, label: 'Hide', action: () => alert('Post hidden') },
     { icon: <Flag size={16} />, label: 'Report', action: () => alert('Report dialog opened'), isReport: true }
   ];
 
   return (
+   
     <motion.div 
-      whileHover={{ y: -2 }}
+      whileHover={{ borderRadius: '0px' }}
       className='relative rounded-2xl hover:bg-gray-200/80 dark:hover:bg-neutral-950/80 dark:bg-neutral-900 p-5 border mb-4 dark:border-zinc-800 border-zinc-200 transition-colors duration-200'
     >
       {/* Header with community info and menu */}
-      <div className="flex items-center justify-between mb-3">
+      <div to={"/post"} className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2 text-gray-600 text-xs">
           <div className="size-6 bg-teal-500 text-white flex justify-center items-center rounded-full font-medium">
             {community.charAt(0).toUpperCase()}
           </div>
-          <span className='text-zinc-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors'>
+          <Link to="/community" className='text-zinc-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors'>
             c/{community}
-          </span>
+          </Link>
           <span className='text-zinc-400'>●</span>
           <span className='text-zinc-500 dark:text-zinc-400'>{time}</span>
         </div>
@@ -65,7 +67,7 @@ const PostCard = ({ title, content, image, community = "strangers-with-vcandy", 
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.15 }}
-              className="absolute right-3 top-10 z-10 w-48 bg-white dark:bg-neutral-800 rounded-lg shadow-lg border border-zinc-200 dark:border-zinc-700 overflow-hidden"
+              className="absolute right-3 top-10 z-100 w-48 bg-white dark:bg-neutral-800 rounded-lg shadow-lg border border-zinc-200 dark:border-zinc-700 overflow-hidden"
             >
               {menuItems.map((item, index) => (
                 <motion.button
@@ -94,11 +96,11 @@ const PostCard = ({ title, content, image, community = "strangers-with-vcandy", 
 
       {/* Post content */}
       <h3 className='font-bold text-zinc-800 dark:text-zinc-200 text-lg mb-2 line-clamp-2'>
-        {title}
+        <Link to="/post">{title}</Link>
       </h3>
 
       {image ? (
-        <div className="flex justify-center items-center bg-slate-100 dark:bg-zinc-800 rounded-2xl overflow-hidden mb-2">
+        <Link to="/post" className="flex justify-center items-center bg-slate-100 dark:bg-zinc-800 rounded-2xl overflow-hidden mb-2">
           <img 
             className='w-full h-auto max-h-96 object-contain' 
             src={image} 
@@ -109,15 +111,18 @@ const PostCard = ({ title, content, image, community = "strangers-with-vcandy", 
               e.target.src = 'https://via.placeholder.com/600x400?text=Image+not+available';
             }}
           />
-        </div>
+        </Link>
       ) : (
+       <Link to="/post">
         <p className='text-sm text-gray-600 dark:text-gray-400 line-clamp-4 mb-2'>
           {content}
         </p>
+        </Link>
       )}
 
       {/* Engagement metrics would go here */}
     </motion.div>
+   
   );
 };
 

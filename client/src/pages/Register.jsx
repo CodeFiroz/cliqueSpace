@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Eye, EyeOff, Lock, Mail, User } from 'lucide-react';
 import validation from '../utils/validation';
 import toast, { Toaster } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -262,9 +263,9 @@ const Register = () => {
 
               <div className="text-center text-sm text-gray-600 dark:text-gray-400">
                 Already have an account?{' '}
-                <a href="#" className="text-orange-500 hover:underline font-medium">
+                <Link to="/sign-in" className="text-orange-500 hover:underline font-medium">
                   Sign in
-                </a>
+                </Link>
               </div>
             </motion.form>
           </div>
