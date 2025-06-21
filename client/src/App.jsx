@@ -11,6 +11,8 @@ import WritePost from './pages/WritePost'
 
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import CreateCommunity from './pages/CreateCommunity'
+import ForgotPassword from './pages/ForgotPassword'
+import ResetPassword from './pages/ResetPassword'
 
 const App = () => {
   return (
@@ -26,6 +28,8 @@ const App = () => {
       <Route path='/new-post' element={<WritePost />} />
       <Route path='/community' element={<Community />} />
       <Route path='/create-community' element={<CreateCommunity />} />
+      <Route path='/forgot-password' element={<ForgotPassword />} />
+      <Route path='/reset-password' element={<ResetPassword />} />
     </Routes>
     </BrowserRouter>
 
