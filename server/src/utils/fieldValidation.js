@@ -10,6 +10,7 @@ const fieldValidation = (res, ...fields) => {
             });
         }
     }
+    return;
 
 }
 
