@@ -8,9 +8,7 @@ export const registerUser = asyncHandler(async (req, res) => {
 
   const { name, email, password } = req.body;
 
-  if (!fieldValidation(res, name, email, password)) {
-    return;
-  }
+  fieldValidation(res, name, email, password)
 
   const existingUser = await User.findOne({ email: email }).select('+password');
 
@@ -35,7 +33,7 @@ export const registerUser = asyncHandler(async (req, res) => {
 
     const savedUser = await newUser.save()
 
-    authTokenCookie(register._id, res);
+    authTokenCookie(savedUser._id, res);
 
     console.log(`[AUTH] New user registered: ${savedUser.email}`);
 
