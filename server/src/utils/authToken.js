@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-export const authTokenCookie = (userid, res) => {
+const authTokenCookie = (userid, res) => {
   const token = jwt.sign(
     {
       userid,
@@ -16,3 +16,5 @@ export const authTokenCookie = (userid, res) => {
     secure: process.env.NODE_ENV !== "development",
   });
 };
+
+export default authTokenCookie;

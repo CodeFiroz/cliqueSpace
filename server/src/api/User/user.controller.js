@@ -1,49 +1,64 @@
 import User from "./model.user.js";
 import asyncHandler from "../../utils/asyncHandler.js"
 import { encryptPassword } from "../../utils/hashPassword.js";
-import { authTokenCookie } from "../../utils/authToken.js";
+import authTokenCookie from "../../utils/authToken.js";
+import fieldValidation from "../../utils/fieldValidation.js";
 
-export const registerUser = asyncHandler(async (req, res)=>{
+export const registerUser = asyncHandler(async (req, res) => {
 
-    const {name, email, password} = req.body;
+  const { name, email, password } = req.body;
 
-    if (!name?.trim() || !email?.trim() || !password?.trim()) {
-  console.log("Missing required fields 😵");
-  return res.status(400).json({
-    success: false,
-    message: "Required fields are missing 😵",
-  });
-}
+  if (!fieldValidation(res, name, email, password)) {
+    return;
+  }
 
-    const existUser = await User.findOne({email: email}).select('+password');
+  const existingUser = await User.findOne({ email: email }).select('+password');
 
-    if(existUser){
-         return res.status(400).json({
-            success: false,
-            message: `user has already account.`
-        })
-    }
+  if (existingUser) {
+    console.warn(`[AUTH] Registration attempt with existing email: ${email}`);
+    return res.status(409).json({
+      success: false,
+      message: `User already exists with this email address`,
+      errorCode: "USER_EXISTS"
+    })
+  }
 
-    const hashedPassword = await encryptPassword(password);
+  const hashedPassword = await encryptPassword(password);
 
-    const register = new User({
-        name,
-        email,
-        password: hashedPassword
+  const newUser = new User({
+    name,
+    email,
+    password: hashedPassword
+  })
+
+  try {
+
+    const savedUser = await newUser.save()
+
+    authTokenCookie(register._id, res);
+
+    console.log(`[AUTH] New user registered: ${savedUser.email}`);
+
+
+    return res.status(201).json({
+      success: true,
+      message: `new user registered 🎉.`,
+      data: {
+        id: savedUser._id,
+        name: savedUser.name,
+        email: savedUser.email
+      }
     })
 
-    if(! await register.save()){
-          return res.status(400).json({
-            success: false,
-            message: `user not created.`
-        })
-    }
-    
-    authTokenCookie(register._id, res);
-    return res.status(201).json({
-            success: true,
-            message: `new user registered 🎉.`,
-        })
+  } catch (error) {
+    console.error(`[AUTH] Registration error for ${email}:`, error);
+    return res.status(500).json({
+      success: false,
+      message: `Failed to create user account.`,
+      errorCode: "REGISTRATION_FAILED",
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+    })
+  }
 
 
 })
